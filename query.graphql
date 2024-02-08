@@ -1,0 +1,31 @@
+# This is a sample query.
+# We have a playground but the responses contain at most 10 nodes thus
+# pagination is needed.
+# In the future, running your own graphQL server will allow you to modify
+# this behavior. The server is lightweight and opensource thus it is 
+# recommended to run it yourselves.
+query{
+  checkpoint(id:{sequenceNumber: 25608439} ) {
+    sequenceNumber
+    transactionBlocks(after: "eyJjIjoyNTYwODkxNCwidCI6MTA4MzEzODMxOH0") {
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        digest
+        effects {
+          balanceChanges {
+            nodes {
+              amount
+              coinType {
+                repr
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
